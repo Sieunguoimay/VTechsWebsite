@@ -1,0 +1,463 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,500,700');
+/* Source+Sans+Pro */
+
+html, body{
+    height:100%;
+    width:100%;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.navbar{
+    padding-left:0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    transition: top 0.5s ease;
+}
+
+.navbar-nav li{
+    padding-right:20px;
+}
+
+.nav-link{
+    font-size: 1.1em !important;
+}
+
+
+.navbar-hide {
+    top: -90px;
+}
+.carousel-inner img{
+    width:100%;
+    height:100%;
+}
+
+.carousel-caption{
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+}
+
+.carousel-caption h1{
+    font-size: 500%;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 15px #3e3e3e;
+}
+.carousel-caption h3{
+    font-size:200%;
+    font-weight: 500;
+    text-shadow: 1px 1px 10px #3e3e3e;
+    padding-bottom: 1rem;
+}
+/* .btn-primary{
+    background-color:#6648b1;
+    border: 1px solid #564d7c
+}
+.btn-primary:hover{
+    background-color:#563d7c;
+    border: 1px solid #563d7c
+} */
+
+
+.jumbotron{
+    padding:1rem;
+    border-radius: 0;
+}
+.padding{
+    padding-bottom:2rem; 
+}
+.welcome{
+    width:75%;
+    margin:0 auto;
+    padding-top:2rem;
+}
+.welcome hr{
+    border-top:1px solid #a5a5a5;
+    width:95%;
+    margin-top:.3rem;
+    margin-bottom: 1rem;
+}   
+
+
+.fa-code {
+    color:#e54d26;
+}
+.fa-bold{
+    color:#563d7c;
+}
+.fa-css3 {
+    color:#2163af
+}
+.fa-code, .fa-bold, .fa-css3{
+    font-size:4em;
+    margin:1rem;
+}
+
+
+.TeamContainer{
+    width: 80%;
+}
+
+.fun{
+    width:100%;
+    margin-bottom:2rem;
+}
+
+.gif{
+    max-width: 100%;
+}
+
+.goodbye{
+    color:#ffff;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+.social a{
+    font-size: 4.5em;
+    padding:3rem;
+}
+.fa-facebook{
+    color:#3b5998
+}
+.fa-twitter{
+    color:#00aced
+}
+.fa-google-plus-g{
+    color:#dd4b39
+}
+.fa-instagram{
+    color:#517fa4
+}
+.fa-youtube{
+    color:#bb0000
+}
+
+.fa-facebook:hover,
+.fa-twitter:hover,
+.fa-google-plus-g:hover,
+.fa-instagram:hover,
+.fa-youtube:hover{
+    color:#000000
+}
+
+footer{
+    background-color: #3f3f3f;
+    color:#d5d5d5;
+    padding-top:2rem;
+}
+hr.light{
+    border-top:1px solid #d5d5d5;
+    width:75%;
+    margin-top:0.8rem;
+    margin-bottom:1rem;
+}
+footer a{
+    color:#d5d5d5;
+}
+hr.light-100{
+    border-top:1px solid #d5d5d5;
+    width:100%;
+    margin-top:0.8rem;
+    margin-bottom:1rem;
+}
+
+/*---Media Queries --*/
+
+@media (max-width: 992px) {
+    .social a{
+        font-size:4em;
+        padding:2rem;
+    }
+    .card-deck > .card
+    {
+        width: 29%;
+        flex-wrap: wrap;
+        flex: initial; 
+    }
+}
+@media (max-width: 768px) {
+        
+    .carousel-caption{
+        top:45%;
+    }
+
+    .carousel-caption h1{
+        font-size: 350%;
+        text-transform: uppercase;
+        text-shadow: 1px 1px 15px #000;
+    }
+    .carousel-caption h3{
+        font-size:140%;
+        font-weight: 400;
+        padding-bottom: .2rem;
+    }
+    .carousel-capton .btn{
+        font-size: 95%;
+        padding:8px 14px;
+    }
+    .display-4{
+        font-size:200%;
+    }
+    .social a{
+        font-size:2.5em;
+        padding:1.2rem;
+    }
+}
+@media (max-width: 576px) {
+        
+    .carousel-caption{
+        top:40%;
+    }
+
+    .carousel-caption h1{
+        font-size: 250%;
+    }
+    .carousel-caption h3{
+        font-size:110%;
+    }
+    .carousel-capton .btn{
+        font-size: 90%;
+        padding:4px 8px;
+    }
+    .carousel-indicators{
+        display:none;
+    }
+
+    .display-4{
+        font-size:160%;
+    }
+    .social a{
+        font-size:2em;
+        padding:.7rem;
+    }
+}
+
+
+/*---Firefox Bug Fix --*/
+.carousel-item {
+  transition: -webkit-transform 0.5s ease;
+  transition: transform 0.5s ease;
+  transition: transform 0.5s ease, -webkit-transform 0.5s ease;
+  -webkit-backface-visibility: visible;
+  backface-visibility: visible;
+}
+/*--- Fixed Background Image --*/
+figure {
+  position: relative;
+  width: 100%;
+  height: 60%;
+  margin: 0!important;
+}
+.fixed-wrap {
+  clip: rect(0, auto, auto, 0);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+#fixed {
+  background-image: url('img/mac.png');
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+  will-change: transform;
+}
+/*--- Bootstrap Padding Fix --*/
+[class*="col-"] {
+    padding: 1rem;
+}
+
+
+.fill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
+}
+.fill img {
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%
+}
+
+
+/*
+Extra small (xs) devices (portrait phones, less than 576px)
+No media query since this is the default in Bootstrap
+
+Small (sm) devices (landscape phones, 576px and up)
+@media (min-width: 576px) { ... }
+
+Medium (md) devices (tablets, 768px and up)
+@media (min-width: 768px) { ... }
+
+Large (lg) devices (desktops, 992px and up)
+@media (min-width: 992px) { ... }
+
+Extra (xl) large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... }
+*/
+
+
+
+
+a.custom-card,
+a.custom-card:hover {
+  color: inherit;
+}
+
+
+/* [1] The container */
+.img-hover-zoom {
+    height: 300px; /* [1.1] Set it as per your need */
+    overflow: hidden; /* [1.2] Hide the overflowing of child elements */
+}
+
+/* [2] Transition property for smooth transformation of images */
+.img-hover-zoom img {
+    transition: transform .5s ease;
+}
+
+/* [3] Finally, transforming the image when container gets hovered */
+.img-hover-zoom:hover img {
+    transform: scale(1.5);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Style the Image Used to Trigger the Modal */
+#myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  #myImg:hover {opacity: 0.7;}
+  
+  /* The Modal (background) */
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+  }
+  
+  /* Modal Content (Image) */
+  .modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+  }
+  
+  /* Caption of Modal Image (Image Text) - Same Width as the Image */
+  #caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+  }
+  
+  /* Add Animation - Zoom in the Modal */
+  .modal-content, #caption {
+    animation-name: zoom;
+    animation-duration: 0.6s;
+  }
+  
+  @keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+  }
+  
+  /* The Close Button */
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /* 100% Image Width on Smaller Screens */
+  @media only screen and (max-width: 700px){
+    .modal-content {
+      width: 100%;
+    }
+  }
+
+  
+
+.back-to-top{ 
+    border-radius: 0px;
+    transition-duration: 0.3s;
+    background-color: #4f4f4f;
+    color: #d5d5d5;
+}
+.back-to-top:hover {
+    background-color: #6f6f6f;
+}
+
+
+
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    min-height: 200px;
+    object-fit: cover;
+}
+.card-slider {
+
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 1px 2px;
+    transition: all .1s ease-in-out;
+  }
+  
+.card-slider:hover {
+    box-shadow: rgba(0, 0, 0, 0.22) 0px 5px 10px;
+    transform: translate3d(0px, -1px, 0px);
+  }
+
+.giveMeEllipsis-2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; /* number of lines to show */
+}
