@@ -5,6 +5,15 @@
         <div class="col-sm-12">
     <h1>Create Post</h1>
     {!! Form::open(['action'=>'PostsController@store','method'=>'POST','enctype'=>'multipart/form-data'])!!}
+        <label>Category</label>
+        <select id="categories" name="category">
+            @if(count($categories)>0)
+            @foreach($categories as $category)
+            <option value="{{$category}}">{{$category}}</option>
+            @endforeach
+            @endif
+        </select>
+
         <div class="form-group">
             {{Form::label('title','Title')}}
             {{Form::text('title','',['class'=>'form-control','placeholder'=>'Title'])}}
@@ -13,10 +22,19 @@
             {{Form::label('body','Body')}}
             {{Form::textarea('body','',['id'=>'article-ckeditor','class'=>'form-control','placeholder'=>'Body Text'])}}
         </div>
-        <div class="form-group">
+        {{-- <div class="form-group">
             {{Form::file('cover_image')}}
+        </div> --}}
+        <div class="form-group">
+            <strong>Cover Image </strong>
+            <input type='file' id="imgInp" name="cover_image" />
+            <img id="blah" src="/storage/uploaded_images/noimage.jpg" alt="your image" style="max-width: 100px; max-height:50px"/>
         </div>
-        {{Form::submit('Submit',['class'=>'btn btn-primary'])}}
+
+        <div class="form-group">
+            {{Form::submit('Submit',['class'=>'btn btn-primary'])}}
+            <a href="/dashboard" class="btn btn-danger">Cancel</a>
+        </div>
     {!! Form::close()!!}
 </div>
 </div>
@@ -34,5 +52,20 @@
         filebrowserWindowWidth  : 800,
         filebrowserWindowHeight : 500
     });
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+            $('#blah').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#imgInp").change(function() {
+    readURL(this);
+});
 </script>
 @endsection

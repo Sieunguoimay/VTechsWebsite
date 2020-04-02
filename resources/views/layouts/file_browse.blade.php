@@ -30,7 +30,7 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="card text-center">
                         <div class="card-img-top">
-                        <img src="/storage/cover_images/{{$image['name']}}" class="img-fluid">
+                        <img src="/storage/{{$image['name']}}" class="img-fluid">
                         </div>
                         <div class="card-block mask flex-center">
                             <small class="card-text">{!!$image['size'][0]!!}x{!!$image['size'][1]!!}</small>

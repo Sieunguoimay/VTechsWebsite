@@ -52,10 +52,9 @@
                         </ul>
                     </li>
                 @endif --}}
-<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
-    <div class="container-fluid">
+<nav class="navbar navbar-expand-md navbar-light sticky-top" style="background-color: #fff;">
 
-        <a class="navbar-brand" href="/"><img src="/storage/cover_images/head_logo.png" style="max-width: 170px"></a>
+        <a class="navbar-brand" href="/"><img src="/storage/logos_and_icons/head_logo.png" style="max-width: 170px"></a>
 
         <div class="navbar-header">
             <!-- Collapsed Hamburger -->
@@ -80,15 +79,61 @@
                     <a class="nav-link" href="/products">Sản phẩm</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="/writings">Dự án</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/news">Tin tức</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/solutions">Giải pháp</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="/about">Về chúng tôi</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/contact">Liên hệ</a>
                 </li>
 
-                
+                {{-- <li class="dropdown">
+                    <a class="nav-link" id="dropdown-product" href="/products" class="dropdown-toggle">
+                        Title
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a class="nav-link" href="#" onclick="">Link 1</a></li>
+                        <li><a class="nav-link" href="#" onclick="">Link 2</a></li>
+                        <li><a class="nav-link" href="#" onclick="">Link 3</a></li>
+                    </ul>
+                </li> --}}
+   
+                @if (!Auth::guest())
+                    <li class="dropdown">
+                        <a class="nav-link " href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <img style="height:25px;" class="rounded" @if(Auth::user()->avatar!=null) src="{{Auth::user()->avatar}}" @else src="/storage/logos_and_icons/no_avatar_profile.png" @endif> 
+                            {{ Auth::user()->name }}
+                            <span class="caret"></span>
+                        </a>
+
+                        <ul class="dropdown-menu" role="menu">
+                            
+                            <li><a class="nav-link" href="/dashboard">Profile</a></li>
+                            <li>
+                                <a class="nav-link" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                    Logout
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                @else
+                    <li><a class="btn btn-warning btn-sm mt-1" style="color:white" href="{{ route('login') }}">Login</a></li>
+                    <li><a class="btn btn-warning btn-sm mt-1" style="color:white" href="{{ route('register') }}">Register</a></li>
+                @endif
 
             </ul>
         </div>
-    </div>
 </nav>

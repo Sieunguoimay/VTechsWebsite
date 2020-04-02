@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading">Register</div>
 
@@ -71,6 +71,13 @@
                     </form>
                 </div>
             </div>
+        </div>
+        <div class="col-md-6 mt-5">
+
+            <a href="{{ url('auth/google/redirect') }}" class="btn btn-light btn-block border">
+                <img style="height:40px; margin-right:10px"class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+                <strong>Continue with Goolge</strong>
+            </a>  
         </div>
     </div>
 </div>

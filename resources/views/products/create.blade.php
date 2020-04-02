@@ -1,26 +1,45 @@
 @extends('layouts.app')
+@section('style')
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.8/css/fileinput-rtl.min.css"/>
+@endsection
 @section('content')
 <div class="container padding">
     <div class="row">
         <div class="col-sm-12">
         <h1>Create Product</h1>
-    {{-- {!! Form::open(['action'=>'CKEditorController@image_upload','method'=>'POST','enctype'=>'multipart/form-data'])!!}
+        <div class="file_upload_section">
+            {{-- <form method="post" enctype="multipart/form-data"> --}}
+                <input type="hidden" name="_token" value="{{csrf_token()}}">
+                <div class="form-group">
+                    <input type="file" id="file-1" name="select_file" multiple class="file" data-overwrite-initial="false" data-min-file-count="1">
+                </div>
+                {{-- </form> --}}
+        </div>
+            {{-- {!! Form::open(['action'=>'CKEditorController@image_upload','method'=>'POST','enctype'=>'multipart/form-data'])!!}
         <p><strong>Upload product photos:</strong> 
             {{Form::file('upload')}}
             {{Form::submit('Upload',['class'=>'btn btn-primary'])}}
         </p>
     {!! Form::close()!!} --}}
-        <form method="post" id="upload_form", enctype="multipart/form-data">
+        {{-- <form method="post" id="upload_form", enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="form-group">
-                <input type="file" name="select_file" id="select_file"/>
+                <input type="file" name="select_file" id="select_file" class="query_selector"/>
                 <input type="submit" name="upload" id="upload" class="btn btn-primary" value="Upload"/>
             </div>
         </form>
-        <span id="uploaded_image"></span>
+        <span id="uploaded_image"></span> --}}
+
+
 
         {!! Form::open(['action'=>'ProductsController@store','method'=>'POST','enctype'=>'multipart/form-data'])!!}
-            <input type="hidden" id="product_photo" name="product_photo" value="">
+            {{-- <div class="form-group" id="image_upload_container">
+                <strong>Cover Image </strong>
+                <input required type='file' name="product_photos[]"  class="query_selector" multiple/>
+                <img src="/storage/cover_images/noimage.jpg" alt="your image" style="max-width: 100px; max-height:50px"/>
+            </div> --}}
+            {!!$category_selector!!}
+            <input id="photos_container" type="hidden" name="product_photos" value="">
             <div class="form-group">
                 {{Form::label('name','Name')}}
                 {{Form::text('name','',['class'=>'form-control','placeholder'=>'Name'])}}
@@ -36,11 +55,11 @@
             <div class="form-group">
                 {{Form::label('description','Description')}}
                 {{Form::textarea('description','',['id'=>'article-ckeditor','class'=>'form-control','placeholder'=>'Description'])}}
-            </div>
+            </div>        
             <div class="form-group">
-
+                {{Form::submit('Submit',['class'=>'btn btn-primary'])}}
+                <a href="/dashboard" class="btn btn-danger">Cancel</a>
             </div>
-            {{Form::submit('Submit',['class'=>'btn btn-primary'])}}
         {!! Form::close()!!}
         </div>
     </div>
@@ -49,6 +68,7 @@
 
 @section('script')
 <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.8/js/fileinput.min.js"></script>
 <script type="text/javascript">
     CKEDITOR.replace('article-ckeditor', {
         filebrowserBrowseUrl : '/ckeditor/browse',
@@ -58,7 +78,38 @@
         filebrowserWindowWidth  : 800,
         filebrowserWindowHeight : 500
     });
-$(document).ready(function(){
+
+
+$('#file-1').fileinput({
+    theme:'fa',
+    uploadUrl:"/products/store_multiple_photos",
+    uploadExtraData:function(){
+        return {
+            _token:$("input[name='_token']").val()
+        };
+    },allowedFileExtensions:['jpg','png','gif','jpeg'],
+    overwriteInitial:false,
+    maxFileSize:10240,
+    maxFileNum:10,
+    slugCallback:function(fileName){
+        return fileName;//.replace('(','_').replace(']','_');
+    }
+});
+
+$('#file-1').on('fileuploaded', function(event, data, previewId, index) {
+    var value = $('#photos_container').val();
+    if(value)
+        value+=";"+data.response.uploaded;
+    else
+        value = data.response.uploaded
+    console.log(value);
+    $('#photos_container').val(value);
+}); 
+</script>
+@endsection
+
+{{-- 
+    $(document).ready(function(){
     $('#upload_form').on('submit',function(event){
         event.preventDefault();
         $.ajax({
@@ -92,10 +143,20 @@ window.onbeforeunload = function(){
         return "Your changes have not been saved.";
     }
 }
-</script>
-@endsection
-
-{{-- $.ajax({
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    $.ajax({
     url:"/products/store_photo",
     method:"GET", 
     data:form_data,

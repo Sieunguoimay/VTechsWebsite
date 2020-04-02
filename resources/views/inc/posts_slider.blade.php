@@ -1,6 +1,6 @@
 <!--- Cards -->
-<div class="container padding">
-    <div class="row padding">
+<div class="container">
+    <div class="row">
         @if(count($posts)>0)
             @foreach ($posts as $post)
                 @if($loop->index>2)
@@ -12,13 +12,14 @@
                 <div class="col-md-4 col-sm-6 col-xs-12">
                 @endif
                 <div class="card card-slider">
+                    {{-- data-aos="flip-right" data-aos-duration="800" --}}
                     <a href="/posts/{{$post->id}}" class="custom-card">
-                        <img class="card-img-top img-fluid" alt="Image" src="/storage/cover_images/{{$post->cover_image}}">
+                        <img class="card-img-top img-fluid" alt="Image" src="/storage/{{$post->cover_image}}">
                         <div class="card-body">
                             <h4 class="card-title" >{{$post->title}}</h4>
-                            <small class="card-text">Written {{$post->created_at->diffForHumans()}}</small>
+                            <small class="card-text">Đăng {{$post->created_at->diffForHumans()}}</small>
                             {{-- <p class="card-text">{!!$post->body!!} </p> --}}
-                            {{-- <a href="/posts/{{$post->id}}" class="btn btn-outline-secondary mt-auto">See Post</a> --}}
+                            {{-- <a href="/posts/{{$post->id}}" class="btn btn-outline-secondary mt-auto">Xem</a> --}}
                         </div>
                     </a>
                 </div>

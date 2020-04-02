@@ -5,6 +5,9 @@ html, body{
     height:100%;
     width:100%;
     font-family: 'Source Sans Pro', sans-serif;
+    /* */
+    scroll-behavior: smooth;
+    background-color: #fafafa;
 }
 
 .navbar{
@@ -15,20 +18,24 @@ html, body{
 }
 
 .navbar-nav li{
-    padding-right:20px;
+    padding-right:10px;
 }
 
 .nav-link{
-    font-size: 1.1em !important;
+    font-size: 1.0em !important;
 }
 
 
 .navbar-hide {
     top: -90px;
 }
+/* .dropdown:hover .dropdown-menu{
+    display: block;
+    margin-top: 0;
+ } */
 .carousel-inner img{
     width:100%;
-    height:100%;
+    height:auto;
 }
 
 .carousel-caption{
@@ -138,7 +145,22 @@ html, body{
 .fa-youtube:hover{
     color:#000000
 }
-
+.share_buttons .fa-facebook,
+.share_buttons .fa-twitter,
+.share_buttons .fa-google-plus-g,
+.share_buttons .fa-instagram,
+.share_buttons .fa-linkedin{
+    font-size:1.3em;
+    color:#292929;
+    margin-right: 15px;
+}
+.share_buttons .fa-facebook:hover,
+.share_buttons .fa-twitter:hover,
+.share_buttons .fa-google-plus-g:hover,
+.share_buttons .fa-instagram:hover,
+.share_buttons .fa-linkedin:hover{
+    color:#595959;
+}
 footer{
     background-color: #3f3f3f;
     color:#d5d5d5;
@@ -229,6 +251,9 @@ hr.light-100{
         font-size:2em;
         padding:.7rem;
     }
+
+
+  
 }
 
 
@@ -435,22 +460,29 @@ a.custom-card:hover {
     background-color: #6f6f6f;
 }
 
-
-
 .card-img-top {
     width: 100%;
     height: 15vw;
     min-height: 200px;
     object-fit: cover;
 }
-.card-slider {
+.card-img-top2 {
+    width: 100%;
+    height: 15vw;
+    min-height: 250px;
+    object-fit: cover;
+}
 
-    box-shadow: rgba(0, 0, 0, 0.06) 0px 1px 2px;
+
+.card-slider {
+    box-shadow: rgba(0, 0, 0, 0.06) 0 .2rem .2rem;
     transition: all .1s ease-in-out;
+    /* border:0; */
+    border-radius:.5rem;
   }
   
 .card-slider:hover {
-    box-shadow: rgba(0, 0, 0, 0.22) 0px 5px 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 10px;
     transform: translate3d(0px, -1px, 0px);
   }
 
@@ -460,4 +492,126 @@ a.custom-card:hover {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2; /* number of lines to show */
+}
+small{
+    color:#7b7b7b;
+}
+
+
+/* BEGIN: Display posts page: news, solutions, writings */
+.blog-post{
+    width:100%;
+    padding:1rem 1rem 1rem 1rem;
+    margin-left: .5rem;
+    background-color:#fff;
+    box-shadow:0 .1rem 1rem rgba(0,0,0,.1);
+    display:flex;
+    align-items:center;
+    border-radius:0.4rem;
+}
+.blog-post__img{
+    min-width:15rem;
+    max-width:15rem;
+    height:15rem;
+    transform:translateX(-2rem);
+    position:relative;
+}
+.blog-post__img img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+    background-color: #fff;
+    display:block;
+    border-radius: .4rem;
+}
+/* .blog-post__img::before{
+    content:'';
+    width:100%;
+    height:100%;
+    position: absolute;
+    top:0;
+    left:0;
+    background:linear-gradient(to right,rgba(254,254,254,.05),rgba(254,254,254,.4));
+    border-radius: .4rem;
+} */
+
+.blog-post__date span{
+    display:block;
+    color: rgba(0,0,0,.5);
+    font-size:.9rem;
+    font-weight: 400;
+}
+.blog-post__title{
+    font-size:1.4rem;
+    margin:.5rem 0 .5rem;
+    text-transform: uppercase;
+    color:#4facfe; 
+}
+.blog-post__text{
+    margin-bottom:2rem;
+    font-size:1rem;
+    color:rgba(0,0,0,.7);
+}
+.blog-post__cta{
+    display:inline-block;
+    padding:.2rem .5rem;
+    font-size:1rem;
+    color:#fff;
+    background-image:linear-gradient(to right,#4facfe 0%,#00f2fe 100%);
+    border-radius: .3rem;
+    text-decoration: none;
+}
+.blog-post__cta:hover{
+    background-image:linear-gradient(to right,#4facfe 100%,#00f2fe 0%);
+    color:#fff;
+    text-decoration: none;
+}
+
+
+@media(max-height:1068px){
+    .blog-post{
+        max-width:80rem;
+    }
+    .blog-post__img{
+        max-width:15rem;
+        min-width:15rem;
+    }
+
+}
+@media(max-width:868px){
+    .blog-post{
+        max-width:70rem;
+    }
+}
+@media(max-width:576px){
+    .blog-post{
+        padding:2rem;
+        flex-direction:column;
+    }
+    .blog-post__img{
+        max-width:100%;
+        min-width:100%;
+        transform:translate(0,-3rem);
+    }
+}
+/* END: Display posts page: news, solutions, writings */
+.home-page__button{
+    display:inline-block;
+    padding:.2rem .5rem;
+    font-size:1rem;
+    color:#fff;
+    background-color:#007BFF;
+    border-radius: .3rem;
+    text-decoration: none;
+}
+.home-page__button:hover{
+    background-color:#0069D9;
+    color:#fff;
+    text-decoration: none;
+    box-shadow:0 .5rem 4rem rgba(0,0,0,.1);
+}
+
+/* to solve the problem of model cannot be clicked */
+.modal-backdrop {
+    z-index: -1;
 }
